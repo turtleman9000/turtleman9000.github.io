@@ -1,0 +1,113 @@
+<html>
+
+<header>
+	<title>cizzors</title>
+
+
+</header>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<body>
+	<h1 id='title'>rock wetwipe cizzor</h1>
+	<a id='link' href='index.html'> home </a><br />
+
+	<div class='container bg-info' style='width: 500px'>
+		<button class="btn btn-success" onclick='rps("rock")'>rock</button>
+		<button class="btn btn-success" onclick='rps("wetwipe")'>wet wipe</button>
+		<button class="btn btn-success" onclick='rps("cizzor")'>cizzor</button>
+
+		<h1>My score: </h1>
+		<h2 id='harryScore'>0</h2>
+		<h1>My Move: </h1>
+		<h2 id='myMoveLabel'></h2>
+		<img id='myPic' src='' width='300' height='300' />
+
+		<h1>AI Score </h1>
+		<h2 id='theirScore'>0</h2>
+		<h1>AI Move: </h1>
+		<h2 id='myMoveLabel'></h2>
+		<img id='aiPic' src='' width='300' height='300' />
+</body>
+
+<script>
+	var myScore = 0;
+	var aiScore = 0;
+
+	function rps(choice) {
+		var choices = ['rock', 'wetwipe', 'cizzor']
+
+		var randomNumber = Math.floor(Math.random() * 3);
+
+		var aiChoice = choices[randomNumber];
+
+
+
+		if (choice == aiChoice) {
+			console.log('Tie!');
+		}
+
+		else if (aiChoice == 'rock') {
+
+			document.getElementById('aiPic').src = 'Rock.jpg'
+
+			if (choice == 'wetwipe') {
+
+				document.getElementById('myPic').src = 'wetwipe.jpg'
+				console.log("ya win")
+				myScore++;
+			}
+			else if (choice == 'cizzor') {
+
+				document.getElementById('myPic').src = 'scizzor.jpg'
+				console.log('ya lose')
+				aiScore++;
+			}
+		}
+
+		else if (aiChoice == 'wetwipe') {
+
+			document.getElementById('aiPic').src = 'wetwipe.jpg'
+			if (choice == 'cizzor') {
+
+				document.getElementById('myPic').src = 'scizzor.jpg'
+				console.log("ya win")
+				myScore++;
+			}
+			else if (choice == 'rock') {
+
+				document.getElementById('myPic').src = 'Rock.jpg'
+				console.log('ya lose')
+				aiScore++;
+			}
+
+		}
+
+		else if (aiChoice == 'cizzor') {
+
+			document.getElementById('aiPic').src = 'scizzor.jpg'
+			if (choice == 'rock') {
+
+				document.getElementById('myPic').src = 'Rock.jpg'
+				myScore++;
+				console.log("ya win")
+			}
+			else if (choice == 'wetwipe') {
+
+				document.getElementById('myPic').src = 'wetwipe.jpg'
+				aiScore++;
+				console.log('ya lose')
+			}
+		}
+
+		console.log("Me: " + choice);
+		console.log("magical robot: " + aiChoice);
+
+		document.getElementById('harryScore').innerHTML = myScore;
+		document.getElementById('theirScore').innerHTML = aiScore;
+	}
+
+</script>
+
+</html>
